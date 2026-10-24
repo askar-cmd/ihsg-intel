@@ -1,0 +1,62 @@
+# Perbarui berita + analisis setiap jam, lalu terbitkan dashboard ke GitHub Pages.
+name: Perbarui & terbitkan dashboard
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # tiap jam (menit ke-17, UTC)
+  workflow_dispatch:        # tombol "Run workflow" untuk pembaruan manual
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Lanjutkan dari database hasil run sebelumnya (disimpan di situs yang tayang),
+      # agar riwayat berita, harga, dan "belajar" prediksi tidak hilang.
+      - name: Pulihkan database dari situs yang sedang tayang
+        run: |
+          URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/state/pasar_intel.db.gz"
+          if curl -fsSL "$URL" -o /tmp/db.gz && gunzip -t /tmp/db.gz; then
+            mkdir -p data
+            gunzip -c /tmp/db.gz > data/pasar_intel.db
+            echo "Database dipulihkan dari $URL"
+          else
+            echo "Belum ada database di situs; memakai data/pasar_intel.db dari repo"
+          fi
+
+      - run: python build_static.py --out _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
