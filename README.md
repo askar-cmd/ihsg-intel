@@ -102,9 +102,10 @@ Catatan mode GitHub Pages:
   manual dilakukan lewat **Actions → Run workflow**.
 - Database terbaru disimpan di situs (`state/pasar_intel.db.gz`) dan dipulihkan
   di awal setiap run, sehingga riwayat & bobot "belajar" berlanjut.
-- Jadwal GitHub Actions bisa terlambat beberapa menit, dan GitHub menonaktifkan
-  jadwal pada repo publik yang tidak ada aktivitas commit selama 60 hari
-  (aktifkan lagi dari tab Actions).
+- Jadwal GitHub Actions bisa terlambat beberapa menit. GitHub menonaktifkan
+  jadwal pada repo publik tanpa aktivitas commit selama 60 hari; workflow
+  `keepalive.yml` mencegahnya dengan commit kecil (`.github/keepalive.txt`)
+  setiap tanggal 1. Bila tetap nonaktif, aktifkan lagi dari tab Actions.
 - Uji lokal: `python build_static.py --no-fetch`, lalu buka folder `_site/`
   lewat server statis (mis. `python -m http.server -d _site`).
 
