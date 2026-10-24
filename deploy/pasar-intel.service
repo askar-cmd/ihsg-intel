@@ -1,0 +1,19 @@
+[Unit]
+Description=Pasar Intel IHSG (FastAPI)
+Documentation=https://github.com/
+After=network.target
+
+[Service]
+Type=simple
+User=pasarintel
+Group=pasarintel
+WorkingDirectory=/opt/pasar-intel
+ExecStart=/opt/pasar-intel/venv/bin/python main.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+# Zona waktu server (Singapura / UTC). Sesuaikan jika perlu.
+Environment=TZ=Asia/Singapore
+
+[Install]
+WantedBy=multi-user.target
