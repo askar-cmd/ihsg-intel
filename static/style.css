@@ -1,0 +1,169 @@
+:root{
+  --bg:#0f172a; --panel:#1e293b; --panel2:#16213a; --border:#334155;
+  --text:#e2e8f0; --muted:#94a3b8;
+  --green:#22c55e; --green-bg:#052e16; --green-border:#166534;
+  --red:#ef4444; --red-bg:#450a0a; --red-border:#991b1b;
+  --neutral:#94a3b8; --neutral-bg:#1e293b; --neutral-border:#475569;
+  --blue:#38bdf8; --amber:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:20px}
+
+/* Header */
+.topbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#22c55e,#0ea5e9);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#fff}
+.brand h1{font-size:20px;font-weight:700}
+.sync-info{font-size:12px;color:var(--muted);display:grid;gap:2px;text-align:right}
+.sync-row{display:flex;gap:6px}
+.sync-row span{opacity:.85}
+.sync-row b{color:var(--text);font-weight:600}
+.brand .sub{color:var(--muted);font-size:13px}
+.actions{display:flex;gap:10px;align-items:center}
+.btn{background:var(--panel);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer;transition:.15s}
+.btn:hover{border-color:var(--blue)}
+.btn.primary{background:linear-gradient(135deg,#16a34a,#0891b2);border:none;color:#fff;font-weight:600}
+.btn.primary:disabled{opacity:.55;cursor:progress}
+
+/* Cards summary */
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+.card .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .v{font-size:26px;font-weight:700;margin-top:4px}
+.card .v.small{font-size:18px}
+
+/* Charts-ish */
+.pill{display:inline-block;border-radius:99px;padding:3px 12px;font-size:12px;font-weight:600}
+.pill.bullish{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.pill.bearish{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
+.pill.netral{background:var(--neutral-bg);color:var(--neutral);border:1px solid var(--neutral-border)}
+.pill.cat{background:var(--panel2);color:var(--amber);border:1px solid #78350f}
+.pill.hz{background:var(--panel2);color:var(--blue);border:1px solid #0c4a6e}
+
+h2.section{font-size:16px;color:var(--muted);margin:26px 0 12px;letter-spacing:.3px}
+
+/* Sector matrix table */
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:14px}
+th{background:var(--panel2);color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+tr:last-child td{border-bottom:none}
+td .sec{font-weight:600}
+.sec-link{background:none;border:1px solid var(--border);color:var(--blue);font-weight:600;font-family:inherit;font-size:14px;padding:4px 10px;border-radius:8px;cursor:pointer;transition:.15s;display:inline-block}
+.sec-link:hover{border-color:var(--blue);background:var(--panel2)}
+.hz-cell{display:flex;gap:6px;flex-wrap:wrap}
+.tickers{color:var(--muted);font-size:12px}
+
+/* News list */
+.news{display:grid;gap:12px}
+.news-item{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+.news-item .top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.news-item h3{font-size:15px;font-weight:600;color:#f1f5f9}
+.news-item .meta{color:var(--muted);font-size:12px;margin-top:4px}
+.news-item .summary{color:var(--text);font-size:14px;margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chips .chip{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--muted)}
+.chips .chip b{color:var(--text)}
+
+/* Rekomendasi saham */
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.rec-panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.rec-head{background:var(--panel2);padding:10px 14px;font-size:13px;font-weight:600;color:var(--blue);border-bottom:1px solid var(--border)}
+.rec-body{padding:10px 14px;display:grid;gap:8px}
+.rec-item{display:flex;flex-direction:column;background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:8px 10px;text-align:left;font-family:inherit;color:inherit;cursor:pointer;transition:.15s}
+.rec-item:hover{border-color:var(--blue);transform:translateY(-1px)}
+.rec-code{font-weight:700;color:var(--green);font-size:15px;display:flex;justify-content:space-between;align-items:center}
+.rec-cta{color:var(--blue);font-size:14px;opacity:0}
+.rec-item:hover .rec-cta{opacity:1}
+.rec-name{font-size:12px;color:var(--text)}
+.rec-meta{font-size:11px;color:var(--muted)}
+.rec-theme{font-size:10.5px;color:var(--amber);margin-top:4px;line-height:1.3}
+.rec-none{color:var(--muted);font-size:13px;padding:6px 0}
+
+/* Pendorong pasar */
+.driver-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:8px}
+.driver-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:left;font-family:inherit;color:inherit;cursor:pointer;transition:.15s}
+.driver-card:hover{border-color:var(--blue);transform:translateY(-1px)}
+.driver-name{font-weight:700;color:var(--blue);font-size:15px;margin-bottom:6px}
+.driver-notes{font-size:12px;color:var(--muted);line-height:1.45}
+.driver-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+/* Proyeksi struktural jangka panjang */
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:8px}
+.theme-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:left;font-family:inherit;color:inherit;cursor:pointer;transition:.15s}
+.theme-card:hover{border-color:var(--blue);transform:translateY(-1px)}
+
+/* Modal tema */
+.modal-body{max-height:70vh;overflow:auto;padding-right:4px}
+.tm-desc{font-size:13.5px;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.tm-meta{margin-bottom:12px}
+.tm-sub{font-size:13px;font-weight:700;color:var(--text);margin:16px 0 8px}
+.tm-sectors{display:grid;gap:10px}
+.tm-sector{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.tm-stocks{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.tm-news-list{display:grid;gap:10px}
+.tm-news{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:12px}
+.tm-news-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:4px}
+.news-title{font-size:14px;font-weight:600;color:#f1f5f9}
+.theme-name{font-weight:700;color:var(--amber);font-size:15px;margin-bottom:6px}
+.theme-desc{font-size:12.5px;color:var(--muted);line-height:1.45;-margin-bottom:10px}
+.theme-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+/* Pemantauan harga & belajar */
+.pw-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.model-stats{display:flex;gap:8px;flex-wrap:wrap}
+.pred-update{font-size:12px;color:var(--muted);margin-bottom:12px}
+.pred-update b{color:var(--text);font-weight:600}
+.pw-controls{display:flex;gap:8px;flex-wrap:wrap}
+.perf-panel{margin-bottom:14px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px}
+.perf-head{font-size:13px;color:var(--muted);margin-bottom:10px}
+.pw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.pw-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px}
+.pw-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pw-rhs{text-align:right}
+.pw-price{font-size:20px;font-weight:700;color:var(--blue)}
+.pw-date{font-size:11px;color:var(--muted);margin-top:2px}
+.pw-footer{margin-top:10px}
+.pw-card{cursor:pointer}
+.pw-card:hover{border-color:var(--blue)}
+.spark{width:100%;height:86px;display:block;margin-top:10px;background:var(--panel2);border-radius:8px;font-family:'Segoe UI',system-ui,sans-serif}
+
+/* Crosshair (garis vertikal + panel harga/tanggal) */
+.chart-wrap{position:relative;display:block}
+.cu-line{position:absolute;top:0;bottom:0;width:1px;background:var(--blue);box-shadow:0 0 6px rgba(56,189,248,.5);pointer-events:none;display:none}
+.cu-panel{position:absolute;top:6px;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--blue);border-radius:8px;padding:4px 10px;font-size:12px;white-space:nowrap;color:var(--text);z-index:6;pointer-events:none;display:none;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.cu-panel .d{color:var(--muted);font-size:10px}
+.cu-panel .p{font-weight:700;color:var(--blue);font-size:13px}
+
+/* Modal layar penuh */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal[hidden]{display:none !important}
+.modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.82)}
+.modal-panel{position:relative;width:min(94vw,900px);max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.modal-title{font-size:19px;font-weight:700}
+.modal-info{color:var(--muted);font-size:14px;margin-bottom:14px;display:flex;gap:18px;flex-wrap:wrap}
+.modal-info b{color:var(--text);font-weight:600}
+#modalChart svg.spark{background:var(--panel2);border-radius:10px;height:auto}
+
+/* Banner filter berita */
+.filter-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--panel2);border:1px solid var(--blue);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px;color:var(--text)}
+.filter-banner b{color:var(--blue)}
+.chip.tic{cursor:pointer}
+.chip.tic:hover{border-color:var(--blue);color:var(--blue)}
+.news-link{display:inline-block;margin-top:10px;font-size:13px;color:var(--blue);text-decoration:none;font-weight:600}
+.news-link:hover{text-decoration:underline}
+
+/* Footer */
+footer{margin-top:36px;border-top:1px solid var(--border);padding-top:16px;color:var(--muted);font-size:12px}
+
+/* Empty / loading */
+.empty{background:var(--panel);border:1px dashed var(--border);border-radius:14px;padding:40px;text-align:center;color:var(--muted)}
+.loading{color:var(--muted);padding:20px;text-align:center}
+
+/* Responsive */
+@media(max-width:680px){
+  th,td{padding:10px}
+  .news-item h3{font-size:14px}
+}

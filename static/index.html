@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasar Intel — IHSG</title>
+<link rel="stylesheet" href="/static/style.css?v=8">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">PI</div>
+      <div>
+        <h1>Pasar Intel — IHSG</h1>
+        <div class="sub">Agregator berita otomatis → pertimbangan sektor &amp; saham</div>
+      </div>
+    </div>
+    <div class="actions">
+      <span id="healthBadge" class="pill netral">memuat…</span>
+      <button class="btn primary" id="refreshBtn">↻ Perbarui Sekarang</button>
+    </div>
+    <div class="sync-info">
+      <div class="sync-row"><span>Sinkronisasi terakhir:</span> <b id="syncTime">–</b></div>
+      <div class="sync-row"><span>Update data terbaru:</span> <b id="syncData">–</b></div>
+    </div>
+  </header>
+
+  <!-- Ringkasan -->
+  <section class="summary" id="summaryCards"></section>
+
+  <!-- Rekomendasi saham per horizon -->
+  <h2 class="section">Rekomendasi Saham <span id="recNote" style="color:var(--muted);font-weight:400;font-size:12px"></span></h2>
+  <div id="recommendations"><div class="loading">Memuat…</div></div>
+
+  <!-- Pendorong pasar (market drivers) -->
+  <h2 class="section">Pendorong Pasar (Suku Bunga · Emas · Komoditas · Perang · Bitcoin)</h2>
+  <div id="driversList"><div class="loading">Memuat pendorong pasar…</div></div>
+
+  <!-- Proyeksi struktural jangka panjang -->
+  <h2 class="section">Proyeksi Struktural Jangka Panjang <span id="themeNote" style="color:var(--muted);font-weight:400;font-size:12px"></span></h2>
+  <div id="themesList"><div class="loading">Memuat tema…</div></div>
+
+  <!-- Pemantauan harga & belajar prediksi -->
+  <h2 class="section">Pemantauan Harga &amp; Belajar Prediksi</h2>
+  <div class="pw-topbar">
+    <div id="modelStats" class="model-stats"><span class="pill netral">memuat data akurasi…</span></div>
+    <div class="pw-controls">
+      <button class="btn" id="perfBtn" type="button">📋 Detail Evaluasi Prediksi</button>
+      <button class="btn primary" id="checkPricesBtn">↻ Perbarui Prediksi</button>
+    </div>
+  </div>
+  <div id="predUpdateInfo" class="pred-update"></div>
+  <div id="perfPanel" class="perf-panel" hidden></div>
+  <div id="priceWatchList"><div class="loading">Memuat grafik harga…</div></div>
+
+  <!-- Matriks dampak sektor -->
+  <h2 class="section">Matriks Dampak Sektor (IHSG)</h2>
+  <div id="sectorMatrix"><div class="loading">Memuat…</div></div>
+
+  <!-- Berita terbaru -->
+  <h2 class="section">Berita Terbaru &amp; Analisis</h2>
+  <div id="newsList"><div class="loading">Memuat…</div></div>
+
+  <footer>
+    <p><strong>Disclaimer:</strong> Aplikasi ini bersifat <em>pertimbangan informasi</em> berbasis berita
+    publik dan leksikon sentimen. Bukan jaminan, bukan nasihat investasi, dan bukan konsultasi
+    perencanaan keuangan. Selalu lakukan riset mandiri dan konsultasikan dengan profesional
+    sebelum mengambil keputusan investasi.</p>
+    <p style="margin-top:8px">Pasar Intel · dijalankan otomatis setiap hari (06:00 / 12:00 / 18:00 SGT, +8 Singapura).</p>
+  </footer>
+
+</div>
+<!-- Modal detail tema struktural -->
+<div id="themeModal" class="modal" hidden>
+  <div class="modal-backdrop" id="themeModalBackdrop"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div class="modal-title" id="themeModalTitle"></div>
+      <button class="btn" id="themeModalClose" type="button">✕ Tutup</button>
+    </div>
+    <div class="modal-body" id="themeModalBody"></div>
+  </div>
+</div>
+
+<!-- Modal layar penuh untuk grafik harga -->
+<div id="priceModal" class="modal" hidden>
+  <div class="modal-backdrop" id="priceModalBackdrop"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="btn" id="modalClose" type="button">✕ Tutup</button>
+    </div>
+    <div class="modal-info" id="modalInfo"></div>
+    <div class="modal-chart" id="modalChart"></div>
+  </div>
+</div>
+
+<script src="/static/app.js?v=9"></script>
+</body>
+</html>
