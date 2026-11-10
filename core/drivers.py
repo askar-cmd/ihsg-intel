@@ -89,7 +89,7 @@ def build_driver_votes(db, days=14):
             for code, name in tick_iter:
                 v = votes.get(code)
                 if v is None:
-                    v = {"score": 0.0, "count": 0, "name": name,
+                    v = {"score": 0.0, "count": 0, "code": code, "name": name,
                          "sector": sec_key, "sector_name": sec["name"],
                          "driver": drv["name"], "driver_id": drv["id"]}
                     votes[code] = v

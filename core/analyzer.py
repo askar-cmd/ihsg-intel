@@ -156,6 +156,7 @@ def aggregate_day(db, day=None, articles=None):
                 cur = pool.get(code)
                 if cur is None or v["score"] > cur["score"]:
                     pool[code] = v
+                    pool[code].setdefault("code", code)
         # 2) fallback sektor: jangkau seluruh ticker sektor (dari config)
         #     yang memiliki net sentimen positif untuk horizon ini.
         for sec_key, sec in agg.items():
@@ -187,6 +188,7 @@ def aggregate_day(db, day=None, articles=None):
                 cur = pool.get(code)
                 if cur is None or v["score"] > cur["score"]:
                     pool[code] = dict(v)
+                    pool[code].setdefault("code", code)
         ranked = sorted(pool.values(), key=lambda x: -x["score"])
         # terapkan ambang skor minimal
         ranked = [v for v in ranked if v["score"] >= config.RECOMMENDATION_MIN_SCORE]
